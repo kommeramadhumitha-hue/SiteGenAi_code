@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-base: #ffffff;
+    --bg-surface: #f8fafc;
+    --border-color: #e2e8f0;
+    --text-primary: #0f172a; /* Deep navy */
+    --text-secondary: #475569; /* Slate grey */
+    --accent-cobalt: #1d4ed8; /* Restrained cobalt blue */
+    --accent-indigo: #4338ca;
+    --accent-violet: #7c3aed;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background-color: #ffffff;
+    color: #0f172a;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.012em;
+  }
+
+  /* Ensure sticky navbar (h-20 = 80px) does not obscure anchored section headings */
+  section[id], div[id] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  /* Beautiful crisp typography hierarchy */
+  h1, h2, h3, h4, h5, h6 {
+    color: #0f172a;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+
+  /* Make sure default inputs, buttons and links have crisp styling */
+  input, textarea, select {
+    color: #0f172a;
+  }
+}
+
+/* Custom clean light scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Clean UI Card & Panel helpers */
+.clean-panel {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04);
+}
+
+.clean-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.clean-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 8px 24px -4px rgba(79, 70, 229, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Subtle grid background for light theme */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+}
+
+.bg-radial-glow {
+  background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.08) 0%, rgba(124, 58, 237, 0.04) 45%, transparent 75%);
+}
+
+/* Beautiful blue to violet text gradient */
+.text-gradient-hero {
+  background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 45%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Soft blurred glow effects for showcase */
+.hero-glow-sphere-1 {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.18) 0%, rgba(147, 197, 253, 0.08) 50%, transparent 70%);
+  filter: blur(50px);
+}
+
+.hero-glow-sphere-2 {
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.16) 0%, rgba(196, 181, 253, 0.06) 50%, transparent 70%);
+  filter: blur(60px);
+}
+
+/* Floating animation for decorative UI cards */
+@keyframes heroFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes heroFloatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(1deg);
+  }
+}
+
+@keyframes heroFloatReverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(7px) rotate(-1deg);
+  }
+}
+
+.animate-hero-float {
+  animation: heroFloat 5s ease-in-out infinite;
+}
+
+.animate-hero-float-slow {
+  animation: heroFloatSlow 7s ease-in-out infinite;
+}
+
+.animate-hero-float-rev {
+  animation: heroFloatReverse 6s ease-in-out infinite;
+}
+
+/* Ambient gradient rotation */
+@keyframes ambientGlow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.04);
+  }
+}
+
+.animate-ambient-glow {
+  animation: ambientGlow 8s ease-in-out infinite;
+}
+
+/* Reduced motion preference support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-float,
+  .animate-hero-float-slow,
+  .animate-hero-float-rev,
+  .animate-ambient-glow,
+  .animate-pulse,
+  .animate-spin {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.reduce-motion .animate-hero-float,
+.reduce-motion .animate-ambient-glow,
+.reduce-motion .animate-pulse,
+.reduce-motion .animate-spin {
+  animation: none !important;
+  transition: none !important;
+}
